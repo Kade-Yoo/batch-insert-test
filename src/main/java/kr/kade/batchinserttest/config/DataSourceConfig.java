@@ -7,22 +7,22 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
 
-@Configuration
+//@Configuration
 public class DataSourceConfig {
 
-//    @Value(value = "${spring.datasource.driver-class-name}")
-//    private String driverClassName;
-//    @Value(value = "${spring.datasource.url}")
-//    private String url;
-//    @Value(value = "${spring.datasource.username}")
-//    private String username;
+    @Value("${spring.datasource.hikari.driver-class-name}")
+    private String driverClassName;
+    @Value("${spring.datasource.hikari.jdbc-url}")
+    private String url;
+    @Value("${spring.datasource.hikari.username}")
+    private String username;
 
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("org.h2.Driver");
-        dataSource.setUrl("jdbc:h2:mem:testdb;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH");
-        dataSource.setUsername("sa");
+        dataSource.setDriverClassName(driverClassName);
+        dataSource.setUrl(url);
+        dataSource.setUsername(username);
         dataSource.setPassword("");
         return dataSource;
     }
