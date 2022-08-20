@@ -19,15 +19,8 @@ public class JdbcBatchDaoImpl implements BatchDao {
 
     @Transactional
     @ProcessTimeLogging
-    public int[] batchInsertForOrder() {
+    public int[] batchInsertForOrder(Map<String, Object>[] maps) {
         simpleJdbcInsert.withTableName("table_order");
-        Map<String, Object>[] maps = new HashMap[100000];
-        for (long i = 0; i < 100000; i++) {
-            maps[(int) i] = new HashMap<>();
-            maps[(int) i].put("order_id", i + 3);
-            maps[(int) i].put("order_type", "COMPLETE");
-            maps[(int) i].put("product_nm", "Product" + i + 3);
-        }
         return simpleJdbcInsert.executeBatch(maps);
     }
 }

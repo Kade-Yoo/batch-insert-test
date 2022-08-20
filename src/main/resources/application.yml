@@ -5,9 +5,11 @@ spring:
   datasource:
     hikari:
       username: sa
-#      driver-class-name: org.h2.Driver
-      driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-      jdbc-url: jdbc:log4jdbc:h2:mem:testdb;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH
+      # jdbc log 설정
+#      driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+#      jdbc-url: jdbc:log4jdbc:h2:mem:testdb;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH
+      driver-class-name: org.h2.Driver
+      jdbc-url: jdbc:h2:mem:testdb;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH
   h2:
     console:
       enabled: true
@@ -17,7 +19,7 @@ spring:
       data-locations: classpath:data-h2.sql
   jpa:
     database: h2
-    show-sql: true
+#    show-sql: true
     defer-datasource-initialization: true
     hibernate:
       ddl-auto: none
