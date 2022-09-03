@@ -7,6 +7,9 @@ import kr.kade.batchinserttest.service.MybatisBatchInsertService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class MybatisBatchInsertServiceImpl implements MybatisBatchInsertService {
@@ -15,11 +18,24 @@ public class MybatisBatchInsertServiceImpl implements MybatisBatchInsertService 
 
     @Override
     @ProcessTimeLogging
-    public int save() {
+    public int singleBatchSave() {
+        int count = 0;
         for (long i = 0; i < 100000; i++) {
-            mybatisBatchInsertMapper.batchInsert(new OrderDto("Product" + i + 3, "COMPLETE"));
+            mybatisBatchInsertMapper.singleInsert(new OrderDto("Product" + i + 3, "COMPLETE"));
+            count++;
         }
 
-        return 0;
+        return count;
+    }
+
+    @Override
+    @ProcessTimeLogging
+    public int multiBatchSave() {
+        List<OrderDto> list = new ArrayList<>();
+        for (long i = 0; i < 100000; i++) {
+            list.add(new OrderDto("Product" + i + 3, "COMPLETE"));
+        }
+
+        return mybatisBatchInsertMapper.batchInsert(list);
     }
 }

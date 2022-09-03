@@ -29,3 +29,7 @@ spring:
           batch_size: 1000
         order_updates: true
         order_inserts: true
+
+# Mybatis Mapper 경로 지정
+mybatis:
+  mapper-locations: classpath:mapper/*.xml

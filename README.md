@@ -17,8 +17,8 @@
 - [Mybatis](https://mybatis.org/mybatis-3/)
 - 단건 insert 10000건 : 301ms
 - 단건 insert 100000건 : 1108ms
-- batch insert 10000건 :  
-- batch insert 100000건 :  
+- batch insert 10000건 : 
+- batch insert 100000건 : 
 - [참고1](https://devlog-wjdrbs96.tistory.com/200)
 - [참고2](https://khj93.tistory.com/entry/MyBatis-MyBatis%EB%9E%80-%EA%B0%9C%EB%85%90-%EB%B0%8F-%ED%95%B5%EC%8B%AC-%EC%A0%95%EB%A6%AC)
 
@@ -39,8 +39,12 @@
 - 해결 : SQL Annotation 제거
 2. Spring Data JPA, JDBC가 100,000건이 넘어가게 될 경우 뻗는 현상이 발생함
 - 왜 멈추는지 궁금함 : 원인은 로그를 많이 찍어서 
+3. org.apache.ibatis.binding.BindingException: Invalid bound statement (not found) : Mapper경로를 찾을 수 없는 현상
+- mybatis mapper location path 설정함
+- 원인을 추론했을 때 JavaConfig로 읽어들인 설정에 resources/mapper/*.xml을 읽어들이지 못해서 오류가 발생하는 것으로 보인다 (9/3)
 
 ## 추가 개발 및 공부 사항
+- API 스트레스 테스트 구축(JMeter, nGrinder 등)
 - Mybatis, JPA, QueryDSL를 모두 사용할 수 있는 환경 구축
 - 각 Query수행할 때 로그 찍기
 - Spring JDBC, Spring Data JDBC, Mybatis, Spring Data JPA 동작 원리 확인
