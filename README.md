@@ -17,8 +17,9 @@
 - [Mybatis](https://mybatis.org/mybatis-3/)
 - 단건 insert 10000건 : 301ms
 - 단건 insert 100000건 : 1108ms
-- batch insert 10000건 : 
-- batch insert 100000건 : 
+- batch insert 10000건 : 378ms
+- batch insert 100000건 : Out of memory. Java heap space
+- SqlSessionFactory Executor.BATCH를 설정하여 batch insert를 진행했지만 100000건은 제대로 실행이 되지 않음 이유 확인 필요
 - [참고1](https://devlog-wjdrbs96.tistory.com/200)
 - [참고2](https://khj93.tistory.com/entry/MyBatis-MyBatis%EB%9E%80-%EA%B0%9C%EB%85%90-%EB%B0%8F-%ED%95%B5%EC%8B%AC-%EC%A0%95%EB%A6%AC)
 

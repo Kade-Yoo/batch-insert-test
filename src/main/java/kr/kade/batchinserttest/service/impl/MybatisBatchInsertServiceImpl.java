@@ -5,6 +5,9 @@ import kr.kade.batchinserttest.mapper.MybatisBatchInsertMapper;
 import kr.kade.batchinserttest.model.OrderDto;
 import kr.kade.batchinserttest.service.MybatisBatchInsertService;
 import lombok.RequiredArgsConstructor;
+import org.apache.ibatis.session.ExecutorType;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,6 +18,7 @@ import java.util.List;
 public class MybatisBatchInsertServiceImpl implements MybatisBatchInsertService {
 
     private final MybatisBatchInsertMapper mybatisBatchInsertMapper;
+    private final SqlSessionFactory sqlSessionFactory;
 
     @Override
     @ProcessTimeLogging
@@ -36,6 +40,23 @@ public class MybatisBatchInsertServiceImpl implements MybatisBatchInsertService 
             list.add(new OrderDto("Product" + i + 3, "COMPLETE"));
         }
 
-        return mybatisBatchInsertMapper.batchInsert(list);
+        return batchInsert(list);
+    }
+
+    private int batchInsert(List<OrderDto> list) {
+        SqlSession sqlSession = sqlSessionFactory.openSession(ExecutorType.BATCH);
+        int result = 0;
+
+        try {
+            sqlSession.insert("kr.kade.batchinserttest.mapper.MybatisBatchInsertMapper.batchInsert", list);
+        } catch (Exception e) {
+            e.printStackTrace();
+            sqlSession.rollback();
+        }  finally {
+            sqlSession.flushStatements();
+            sqlSession.close();
+        }
+
+        return result;
     }
 }
