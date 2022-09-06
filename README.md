@@ -46,6 +46,7 @@
 
 ## 추가 개발 및 공부 사항
 - API 스트레스 테스트 구축(JMeter, nGrinder 등)
+[API 성능 테스트](https://ch4njun.tistory.com/266)
 - Mybatis, JPA, QueryDSL를 모두 사용할 수 있는 환경 구축
 - 각 Query수행할 때 로그 찍기
 - Spring JDBC, Spring Data JDBC, Mybatis, Spring Data JPA 동작 원리 확인

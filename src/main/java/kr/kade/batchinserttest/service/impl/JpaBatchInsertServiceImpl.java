@@ -2,13 +2,14 @@ package kr.kade.batchinserttest.service.impl;
 
 import kr.kade.batchinserttest.annotation.ProcessTimeLogging;
 import kr.kade.batchinserttest.entity.Order;
+import kr.kade.batchinserttest.model.request.OrderRequest;
 import kr.kade.batchinserttest.repository.OrderRepository;
 import kr.kade.batchinserttest.service.JpaBatchInsertService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -18,11 +19,8 @@ public class JpaBatchInsertServiceImpl implements JpaBatchInsertService {
 
     @Override
     @ProcessTimeLogging
-    public List<Order> batchInsert() {
-        List<Order> orders = new ArrayList<>();
-        for (long i = 0; i < 10000; i++) {
-            orders.add(Order.builder().orderType("COMPLETE").productNm("Product" + i + 3).build());
-        }
-        return orderRepository.saveAll(orders);
+    public int batchInsert(List<OrderRequest> requests) {
+        List<Order> orderEntities = requests.stream().map(OrderRequest::ofOrder).collect(Collectors.toList());
+        return orderRepository.saveAll(orderEntities).size();
     }
 }

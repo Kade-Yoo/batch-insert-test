@@ -1,8 +1,10 @@
 package kr.kade.batchinserttest.service;
 
-import kr.kade.batchinserttest.entity.Order;
+import kr.kade.batchinserttest.model.request.OrderRequest;
+
+import java.util.List;
 
 public interface JdbcBatchInsertService {
 
-    Iterable<Order> batchInsert();
+    int batchInsert(List<OrderRequest> requests);
 }
