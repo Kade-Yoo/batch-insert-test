@@ -9,13 +9,13 @@ import lombok.Setter;
 @NoArgsConstructor
 public class OrderDto {
 
-    private long order_id;
-    private String product_nm;
-    private String order_type;
+    private long orderId;
+    private String productNm;
+    private String orderType;
 
     @Builder
-    public OrderDto(String product_nm, String order_type) {
-        this.product_nm = product_nm;
-        this.order_type = order_type;
+    public OrderDto(String productNm, String orderType) {
+        this.productNm = productNm;
+        this.orderType = orderType;
     }
 }

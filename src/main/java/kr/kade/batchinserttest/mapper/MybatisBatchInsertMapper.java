@@ -11,7 +11,7 @@ import java.util.List;
 public interface MybatisBatchInsertMapper {
 
     @Insert(value = "INSERT INTO table_order(order_id, product_nm, order_type)" +
-            "VALUES(nextval('order_sequence'), #{product_nm}, #{order_type})")
+            "VALUES(nextval('order_sequence'), #{productNm}, #{orderType})")
     int singleInsert(OrderDto orderDto);
 
     int batchInsert(@Param("list") List<OrderDto> list);

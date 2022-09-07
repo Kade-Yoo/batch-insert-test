@@ -7,7 +7,7 @@
         INSERT INTO table_order(order_id, product_nm, order_type)
         VALUES
             <foreach collection="list" item="item" separator=",">
-                (nextval('order_sequence'), #{item.product_nm}, #{item.order_type})
+                (nextval('order_sequence'), #{item.productNm}, #{item.orderType})
             </foreach>
     </insert>
 </mapper>

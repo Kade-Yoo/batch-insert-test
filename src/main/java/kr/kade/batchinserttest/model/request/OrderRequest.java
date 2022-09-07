@@ -28,8 +28,8 @@ public class OrderRequest {
 
     public static OrderDto ofOrderDto(OrderRequest request) {
         return OrderDto.builder()
-                .order_type(request.getOrderType())
-                .product_nm(request.getProductNm())
+                .orderType(request.getOrderType())
+                .productNm(request.getProductNm())
                 .build();
     }
 }
