@@ -45,10 +45,16 @@
 - 원인을 추론했을 때 JavaConfig로 읽어들인 설정에 resources/mapper/*.xml을 읽어들이지 못해서 오류가 발생하는 것으로 보인다 (9/3)
 
 ## 추가 개발 및 공부 사항
-- API 스트레스 테스트 구축(JMeter, nGrinder 등)
+- API 스트레스 테스트 구축(JMeter, nGrinder, k6 등)
 [API 성능 테스트](https://ch4njun.tistory.com/266)
 - Mybatis, JPA, QueryDSL를 모두 사용할 수 있는 환경 구축
 - 각 Query수행할 때 로그 찍기
 - Spring JDBC, Spring Data JDBC, Mybatis, Spring Data JPA 동작 원리 확인
 - 각 모듈별 올바른 사용처 작성
 - 또 다른 데이터 연동 모듈 서칭
+
+## API 스트레스 테스트 Tool
+- k6 : 
+API 스트레스 테스트 툴(JMeter, nGrinder, k6, Gatling, Locust)을 분석하여 가장 적합한 것을 골랐다 
+먼저, 스트레스 테스트의 목적이 아니기 때문에 러닝커브가 가장 낮고 경량화되있는 오픈소스를 선택하려고 하였다.
+그렇게 종합하여 선택한 툴이 k6이다. k6를 이용하여 스트레스 테스트를 진행해보겠다.
