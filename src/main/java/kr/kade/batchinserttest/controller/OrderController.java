@@ -27,17 +27,17 @@ public class OrderController {
     }
 
     @PostMapping("/jdbc-save")
-    public int saveForJdbc(List<OrderRequest> requests) {
+    public int saveForJdbc(@RequestBody List<OrderRequest> requests) {
         return jdbcBatchInsertService.batchInsert(requests);
     }
 
     @PostMapping("/mybatis-single-save")
-    public int singleSaveForMybatis(List<OrderRequest> requests) {
+    public int singleSaveForMybatis(@RequestBody List<OrderRequest> requests) {
         return mybatisBatchInsertService.singleBatchSave(requests);
     }
 
     @PostMapping("/mybatis-multi-save")
-    public int multiSaveForMybatis(List<OrderRequest> requests) {
+    public int multiSaveForMybatis(@RequestBody List<OrderRequest> requests) {
         return mybatisBatchInsertService.multiBatchSave(requests);
     }
 }
