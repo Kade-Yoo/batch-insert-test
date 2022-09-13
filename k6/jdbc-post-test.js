@@ -9,7 +9,7 @@ const params = {
 };
 
 export const options = {
-    vus: 10,
+    vus: 1000,
     duration: '30s'
 };
 
@@ -27,6 +27,7 @@ export default function () {
 }
 
 /**
+ * vus = 10
  * █ setup
  *
  *      data_received..................: 81 MB  2.7 MB/s
@@ -45,4 +46,8 @@ export default function () {
  *      iterations.....................: 647135 21565.711261/s
  *      vus............................: 10     min=10         max=10
  *      vus_max........................: 10     min=10         max=10
+ *
+ *
+ *
  */
+

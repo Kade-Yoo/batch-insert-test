@@ -61,3 +61,5 @@ API 스트레스 테스트 툴(JMeter, nGrinder, k6, Gatling, Locust)을 분석�
 - 테스트 파일 : k6/jpa-post-test.js, k6/jdbc-post-test.js, k6/mybatis-single-post-test.js, k6/mybatis-multi-post-test.js
 - 4가지 데이터 연동 로직에 대해 테스트 진행하였으나 도출된 데이터를 어떻게 활용해야되는지 공부가 필요할 듯 하다.
 - 스트레스 테스트를 하나의 API당 하나의 테스트 파일을 두는 것이 맞는지 생각해보자
+- Virtual User 수가 10 -> 1000 요청 보내는 시간이 길어졌다. 당연한거다 사람이 많이 접근을 하면 부하가 걸리니까
+- 또한, 실패률과 요청이 막히는 시간이 늘어났다.
